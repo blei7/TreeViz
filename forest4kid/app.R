@@ -49,7 +49,7 @@ ui <- fluidPage(
               tabPanel("About", 
                        h2("Description"),
                        br(), 
-                       "This web app allows for visual comparision of the impact of forest fires.The app is design to help better educate kids on forest fires and climate change in general.,
+                       "This web app allows for visual comparision of the impact of forest fires.The app is design to help better educate kids on forest fires and climate change in general.",
                        br(), 
                        br(),
                        br(),
