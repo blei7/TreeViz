@@ -126,7 +126,7 @@ ui <- fluidPage(
                            )
                   )
                   
-        ), style = 'width: 800px')) # ; height: 1000px'))
+        ), style = 'width: 1100px')) # ; height: 1000px'))
 
 
 
