@@ -6,4 +6,4 @@
 
 TreeViz explores different visualizations and impact of climate change, to educate and motivate the future generation. 
 
-The app can be found online at [shinyapps.io](https://pakalexh.shinyapps.io/TreeViz/). 
+The TreeViz app can be found online at https://pakalexh.shinyapps.io/TreeViz/. 
