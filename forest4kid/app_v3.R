@@ -86,7 +86,7 @@ ui <- fluidPage(
                                                       step = 1, sep = "")
                                ),
                                column(12,
-                                      span("In this tab we fake healthcare data over time.")))
+                                      tagList("Source:", a("BC Historical Fire Incident Locations", href="https://catalogue.data.gov.bc.ca/dataset/fire-incident-locations-historical#edc-pow"))))
                            )
                            ),
                   
@@ -105,8 +105,9 @@ ui <- fluidPage(
                                                      step = 1, sep = "")
                                       ),
                                column(12,
-                                      span("In this tab we fake healthcare data over time.")))
-                           )
+                                      tagList("Source:", a("BC Historical Air Quality Data", 
+                                                           href="https://catalogue.data.gov.bc.ca/dataset/air-quality-monitoring-unverified-hourly-air-quality-and-meteorological-data")))
+                           ))
                   ),
                   tabPanel("Economic Impact", 
                            fluidRow(
@@ -121,8 +122,8 @@ ui <- fluidPage(
                                                       value = 2008,
                                                       step = 1, sep = "")
                                ),
-                               column(12,
-                                      span("In this tab we fake economic data over time.")))
+                               tagList("Source:", a("National Forestry Database", 
+                                                    href="http://nfdp.ccfm.org/en/data/fires.php")))
                            )
                   )
                   
