@@ -35,7 +35,7 @@ public class outOfTime extends AppCompatActivity {
 
         timeUpText.setTypeface(tf);
         playAgain.setTypeface(sf);
-        playAgain.setButtonColor(ContextCompat.getColor(getApplicationContext(),R.color.gold));
+        playAgain.setButtonColor(ContextCompat.getColor(getApplicationContext(),R.color.brown));
 
     }
 
