@@ -28,7 +28,7 @@ On the TreeViz interface, students learn about the intensity, location of the fo
 
 At the back-end, TreeViz collects the interaction data from students and perform statistical analyses such as A/B testing to determine which topics within climate change students care about the most. This information is powerful because educators can customize their teaching methods to achieve more effective learning, based on the fact that the more relatable the content is to you, the more likely you will listen and take actions.
 
-![](img/1.PNG)
+![](img/1.png)
 
 ## Data we used:
 
