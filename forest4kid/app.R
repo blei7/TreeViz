@@ -17,7 +17,7 @@ library(ggmap)
 
 
 #load data
-crime_df  <- read_csv("../data/cleaned_crime.csv") %>% 
+fire_df  <- read_csv("../data/H_FIRE_PNT.csv") %>% 
     mutate(city = as.factor(city))
 
 ui <- fluidPage(
@@ -28,17 +28,7 @@ ui <- fluidPage(
           sidebarPanel(
             style = "position:fixed;width:fixed;", ##fix sidebar pos, but overlap in narrow size broswer
             
-            # Input: select city
-            selectInput("city",
-                        label = "Cities: (where do you want to live?)",
-                        choices = crime_df$city,
-                        multiple = TRUE,
-                        selected = c('Kansas City','Boston','Atlanta', 'Seattle', 'Long Beach')),
-            #Input: select crime type
-            radioButtons("crime", 
-                         label = "Crimes",
-                         choices = c("Homicide", "Rape", "Robbery", "Assault", "All Crimes"),
-                         selected = "All Crimes"),
+
             #Input: select years
             sliderInput("year", 
                         label ="Year",
