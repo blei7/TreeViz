@@ -62,6 +62,20 @@ class QuestionHelper extends SQLiteOpenHelper {
                 "Interior BC",
                 "Interior BC"));
 
+        arraylist.add(new Question("What is the leading natural cause of forest fires?",
+                "Lightning",
+                "Drought",
+                "Volcanic eruptions",
+                "Flood",
+                "Lighting"));
+
+        arraylist.add(new Question("What do forest fires need in order to burn?",
+                "Low humidity",
+                "Drought",
+                "Lightning",
+                "Fuel",
+                "Fuel"));
+
         this.addAllQuestions(arraylist);
 
     }
