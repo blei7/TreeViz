@@ -17,6 +17,7 @@ library(lubridate)
 library(leaflet.extras)
 library(here)
 
+
 fire_df_heat  <- read_csv(here("data", "combined_data", "fire_heat_final.csv"))
 co_data_year  <- read_csv(here("data", "combined_data", "co_final.csv"))
 econ_df_year <- read_csv(here("data", "combined_data", "econ_final.csv"))
@@ -33,9 +34,9 @@ econ_df_year <- read_csv(here("data", "combined_data", "econ_final.csv"))
 #   summarise(avg = mean(ppm)) %>%
 #   mutate(avg = as.numeric(avg))
 # 
-# co_data_year$color <- cut(co_data_year$avg, 
-#                           breaks = c(0, 0.3, 0.4, 0.5, 1), 
-#                           labels = c("#45050c", "#720e07", "#8b6220", "#d5ac4e"))
+econ_df_year$color <- cut(econ_df_year$dollars,
+                          breaks = c(0, 2000000, 4000000, 6000000, 15000000),
+                          labels = c("#799385", "#6C8678", "#61786B", "#55685F"))
 # 
 # 
 # econ_df_year <- econ_df %>%
@@ -47,8 +48,6 @@ econ_df_year <- read_csv(here("data", "combined_data", "econ_final.csv"))
 # Define UI for application that draws a histogram
 ui <- fluidPage(
   
-  
-  
   tags$head(
     tags$style(HTML("
       @import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light');
@@ -59,7 +58,7 @@ ui <- fluidPage(
   headerPanel(
     h1("TreeViz", 
        style = "font-family: 'Shadows Into Light', cursive;
-        font-weight: 500; line-height: 1.1; 
+        font-weight: 800; line-height: 1.1; 
         color: #382A1F;")),
   
 
@@ -78,7 +77,7 @@ ui <- fluidPage(
                   tabPanel("Fire Zone",
                            leafletOutput("map1"),
                            #Input: select years
-                           wellPanel(
+                           wellPanel(style = "background: #f8f2ec",
                              fluidRow(
                                column(12, sliderInput("slider_1",
                                                       label ="Year",
@@ -97,7 +96,7 @@ ui <- fluidPage(
                              column(7, leafletOutput("map2")),
                              column(5, plotlyOutput("plot2"))
                            ),
-                           wellPanel(
+                           wellPanel(style = "background: #f8f2ec",
                              fluidRow(
                                column(12, sliderInput("slider_2",
                                                      label ="Year",
@@ -114,7 +113,7 @@ ui <- fluidPage(
                              column(7, leafletOutput("map3")),
                              column(5, plotlyOutput("plot3"))
                            ),
-                           wellPanel(
+                           wellPanel(style = "background: #f8f2ec",
                              fluidRow(
                                column(12, sliderInput("slider_3",
                                                       label ="Year",
@@ -175,7 +174,9 @@ server <- function(input, output) {
   output$plot2 <- renderPlotly({
     plot_ly(data = filtered_data_ppm(), x = ~year, y = ~avg, 
             type = "scatter", mode = "markers", color = ~I(color)) %>%
-      layout(yaxis = list(title = "CO PPM per Year", range = c(0, 0.6)),
+      layout(plot_bgcolor = '#F8ECEC',
+             paper_bgcolor = '#F8ECEC',
+             yaxis = list(title = "CO PPM per Year", range = c(0, 0.6)),
              xaxis = list(title = "", 
                           range = c(1999, 2019), tickangle = -45, dtick = 3, tick0 = 2000))
   })
@@ -201,8 +202,11 @@ server <- function(input, output) {
   
   output$plot3 <- renderPlotly({
     plot_ly(data = filtered_data_econ(), x = ~year, y = ~dollars, 
-            type = "bar") %>%#, color = ~I(color)) %>%
-      layout(title = "Economic Damage over Time",
+            type = "bar", color = ~I(color)) %>%
+      layout(font = list(color = "#382A1F"),
+             plot_bgcolor = '#F8ECEC',
+             paper_bgcolor = '#F8ECEC',
+             #title = "Economic Damage over Time",
              yaxis = list(title = "Economic Damage ($)", range = c(0, 13000000)),
              xaxis = list(title = "", 
                           range = c(1999, 2019), tickangle = -45, dtick = 3, tick0 = 2000))
