@@ -1,0 +1,13 @@
+name: TreeViz
+title: TreeViz
+username:
+account: pakalexh
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 910964
+bundleId: 2062133
+url: https://pakalexh.shinyapps.io/TreeViz/
+when: 1557090501.90768
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: temp/temp.R|www/bootstrap.min.css
