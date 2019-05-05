@@ -17,8 +17,6 @@ library(lubridate)
 library(leaflet.extras)
 library(here)
 
-print(here)
-
 fire_df_heat  <- read_csv(here("data", "combined_data", "fire_heat_final.csv"))
 co_data_year  <- read_csv(here("data", "combined_data", "co_final.csv"))
 econ_df_year <- read_csv(here("data", "combined_data", "econ_final.csv"))
@@ -48,9 +46,31 @@ econ_df_year <- read_csv(here("data", "combined_data", "econ_final.csv"))
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
+  
+  
+  
+  tags$head(
+    tags$style(HTML("
+      @import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light');
+      body {background-color: #F8ECEC; }
+    "))
+  ),
+  
+  headerPanel(
+    h1("TreeViz", 
+       style = "font-family: 'Shadows Into Light', cursive;
+        font-weight: 500; line-height: 1.1; 
+        color: #382A1F;")),
+  
 
+    tags$style(HTML("
+                    .tabbable > .nav > li > a[data-value='Fire Zone'] {background-color: #DBAB61;   color:white}
+                    .tabbable > .nav > li > a[data-value='Health Impact'] {background-color: #6C8685;  color:white}
+                    .tabbable > .nav > li > a[data-value='Economic Impact'] {background-color: #294F50; color:white}
+                    ")),  
+  
     # Application title
-    headerPanel("TreeViz"),
+    # headerPanel("TreeViz"),
 
     # Sidebar with a slider input for number of bins 
         mainPanel(
@@ -72,7 +92,7 @@ ui <- fluidPage(
                            ),
                   
                   # Healthcare Panel
-                  tabPanel("Air Pollution",
+                  tabPanel("Health Impact",
                            fluidRow(
                              column(7, leafletOutput("map2")),
                              column(5, plotlyOutput("plot2"))
@@ -181,7 +201,7 @@ server <- function(input, output) {
   
   output$plot3 <- renderPlotly({
     plot_ly(data = filtered_data_econ(), x = ~year, y = ~dollars, 
-            type = "bar", mode = "markers") %>%#, color = ~I(color)) %>%
+            type = "bar") %>%#, color = ~I(color)) %>%
       layout(title = "Economic Damage over Time",
              yaxis = list(title = "Economic Damage ($)", range = c(0, 13000000)),
              xaxis = list(title = "", 
